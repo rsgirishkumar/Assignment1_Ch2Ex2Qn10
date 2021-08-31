@@ -1,0 +1,115 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\pagestyle{empty}
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\begin{document}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\cmyvec}[1]{\ensuremath{\begin{pmatrix*}[c]#1\end{pmatrix*}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\proj}[2]{\textbf{proj}_{\vec{#1}}\vec{#2}}
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+
+\title{
+Assignment - 1
+}
+\author{ Prasanna Kumar R - SM21MTECH14001}
+\maketitle
+\newpage
+\bigskip
+\bibliographystyle{IEEEtran}
+\section*{\textbf{Problem}}
+\noindent
+\textbf{An isoceles triangle has the extremities of its base at $(2,5)$ and $(-2,2)$.
+Find the two possible positions of the vertex if its area is 25 sq.units} 
+
+
+\begin{tikzpicture}
+[scale=2,>=stealth,point/.style={draw,circle,fill = black,inner sep=0.5pt},]
+
+%Triangle sides
+\def\a{6}
+\def\b{5}
+\def\c{5}
+ 
+%Coordinates of A
+%\def\p{{\a^2+\c^2-\b^2}/{(2*\a)}}
+%\def\p{2.25}
+%\def\q{{sqrt(\c^2-\p^2)}}
+
+%Labeling points
+\node (A) at (0,1.5)[point,label=above right:$A$] {};
+\node (B) at (-1.5, 0)[point,label=below left:$B$] {};
+\node (C) at (1.5, 0)[point,label=below right:$C$] {};
+
+%Foot of perpendicular
+
+\node (D) at (0,0)[point,label=above right:$D$] {};
+
+%Drawing triangle ABC
+\draw (A) -- node[left] {$\textrm{b}$} (B) -- node[below] {$\textrm{}$} (C) -- node[above,xshift=2mm] {$\textrm{b}$} (A);
+
+%Drawing altitude AD
+\draw (A) -- node[left] {$\textrm{h}$}(D);
+
+%Drawing and marking angles
+%\tkzMarkAngle[fill=orange!40,size=0.5cm,mark=](A,C,B)
+%\tkzMarkAngle[fill=orange!40,size=0.4cm,mark=](D,B,A)
+%\tkzMarkAngle[fill=green!40,size=0.5cm,mark=](B,A,C)
+%\tkzMarkAngle[fill=green!40,size=0.5cm,mark=](C,B,D)
+%tkzMarkRightAngle[fill=blue!20,size=.2](A,D,B)
+%\tkzMarkRightAngle[fill=blue!20,size=.2](B,D,A)
+%\tkzLabelAngle[pos=0.65](A,C,B){$\theta$}
+%\tkzLabelAngle[pos=0.65](A,B,D){$\theta$}
+%\tkzLabelAngle[pos=1](B,A,C){\rotatebox{-45}{$\alpha = 90\degree -\theta$}}
+%\tkzLabelAngle[pos=0.65](C,B,D){$\alpha$}
+
+\end{tikzpicture}
+
+\noindent
+\section*{\textbf{Solution}}
+\noindent
+Let the vertex B be $(2,5)$ and vertex C be $(-2,2)$.\\[6pt]
+Let the other vertex A be $(x,y)$.\\[6pt]
+Let us find the distance of BC
+\begin{center}
+$\vec{B} = \myvec{2\\5}, \vec{C} =\myvec{-2\\2}$
+\end{center}
+$$\left\|\mathbf{B-C}\right\|=\left\|\mathbf{\myvec{2\\5}-\myvec{-2\\2}}\right\|=\sqrt{4^2+3^2}=5$$
+Given, the area of the triangle= 25 sq.units\\
+$$\displaystyle\frac{1}{2}*BC*AD= 25$$
+$$\dfrac{1}{2}*5*h=25$$
+$$AD=h=10$$
+\noindent
+Since ABC is an Isoceles triangle,
+$$AB=AC$$
+$$AB^2=AC^2$$
+$$(x-2)^2+(y-5)^2=(x+2)^2+(y-2)^2$$
+$$4x-4y+4=-4x-10y+25$$
+\begin{equation}
+    {8x+6y=21}
+\end{equation} \\[6pt]
+Point D is the Midpoint of BC \\[6pt]
+$$D=\left(\frac{2-2}{2},\frac{5+2}{2}\right)$$
+$$D=(0,3.5)$$
+We know that $AD=h=10$
+$$AD^2=100$$
+\begin{equation}
+  x^2+(y-3.5)^2=100
+\end{equation}\\[6pt]
+From (1), $x=\dfrac{21-6y}{8}$. Subs $x$ in equation (2)...
+$$\left(\frac{21-6y}{8}\right)^2+(y-3.5)^2=100$$ \\[6pt]
+Solving the above equation, \\[6pt]
+$$1.5625y^2-10.9375y-80.86=0$$
+$$y=11.5,-4.5$$\\[6pt]
+When $y=11.5$ , $x=\dfrac{21-6(11.5)}{8}= -6$ \\[3pt]
+When $y=4.5$ ,  $x=\dfrac{21+6(4.5)}{8}=6$ \\[12pt]
+\textbf{Therefore, The two possible vertex are $(-6,11.5)$ and $(6,-4.5)$}
+\end{document}
